@@ -14,12 +14,43 @@ function loadUsers() {
 function loadPost() {
     fetch('https://jsonplaceholder.typicode.com/posts')
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(data => postData(data))
 }
 function displayUser(data) {
+    const ul = document.getElementById('users');
     console.log(data)
+    for (const user of data) {
+        const li = document.createElement('li');
+        li.innerText = `ID: ${user.id}, Name: ${user.name}, Email: ${user.email}, City: ${user.address.city}`;
+        ul.appendChild(li);
+    }
 }
 
 /*
 fetch  দিয়ে অন্য ওয়েবসাইট এর ডাটা নিজের ওয়েবসাইট এ load করা যাই
 */
+
+
+function postData(data) {
+    const ul = document.getElementById('users');
+    console.log(data)
+    for (const user of data) {
+        const li = document.createElement('li');
+        li.innerText = user.title;
+        ul.appendChild(li)
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
